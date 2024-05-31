@@ -3,13 +3,15 @@ package com.example.solarsystemapp;
 import javafx.animation.PathTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -18,6 +20,17 @@ public class HelloApplication extends Application {
 
         // Create a Pane to hold the shapes
         Pane pane = new Pane();
+
+        //Importing background picture
+        FileInputStream bgpicture = new FileInputStream("d:\\galaxy_background.jpg");
+        Image image = new Image(bgpicture);
+        BackgroundImage bi = new BackgroundImage(image,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        Background bg = new Background(bi);
+        pane.setBackground(bg);
 
         // Create the Sun and planets
         Circle sun = new Circle(300, 300, 40);
